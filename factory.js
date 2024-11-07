@@ -44,14 +44,15 @@ class Factory {
     }
 
     async createClient(name, email, number) {
-        return await Client.create({ name, email, number });
+        return await Client.create({name, email, number});
     }
 
     async createSpecialist(name, email, number) {
-        return await Specialist.create({ name, email, number });
+        return await Specialist.create({name, email, number});
     }
-    async createService(name,length, price ) {
-        return await Service.create({ name,  length, price });
+
+    async createService(name, length, price) {
+        return await Service.create({name, length, price});
     }
 
     async createReservation(day, month, timeStart, services, client, specialist) {
@@ -88,12 +89,7 @@ class Factory {
         return reservation.timeStart + totalServiceLength;
     }
 
-    getReservationsForDay(day, month) {
-        if (this.months[month] && this.months[month].getWorkDay(day)) {
-            return this.months[month].getWorkDay(day).getReservations();
-        }
-        return [];
-    }
+
 
 }
 

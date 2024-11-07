@@ -107,8 +107,12 @@ router.delete('/reservations/:id', async (req, res) => {
 router.get('/reservations/day/:day/month/:month', async (req, res) => {
     try {
         const { day, month } = req.params;
-        const reservations = factory.getReservationsForDay(parseInt(day), parseInt(month));
-        res.json(reservations);
+        const query = {day:day, month:month};
+        const results = await Reservation.find(query)
+            .populate('services')
+            .populate('client')
+            .populate('specialist');
+        res.json(results);
     } catch (error) {
         res.status(400).json({ error: error.message });
     }

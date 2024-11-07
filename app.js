@@ -3,9 +3,8 @@ import mongoose from 'mongoose';
 import apiRoutes from './routes/api.js';
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
-// Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/MarieBeaute', {
 });
 
